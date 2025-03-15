@@ -1,6 +1,38 @@
 @UserManagement_HostAddress = http://localhost:5073
-
-GET {{UserManagement_HostAddress}}/weatherforecast/
-Accept: application/json
+@UserManagement_Token = t0k3n
 
 ###
+POST {{UserManagement_HostAddress}}/api/user
+Content-Type: application/json
+Authorization: Bearer {{UserManagement_Token}}
+
+{
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "password": "securepassword123"
+}
+
+###
+GET {{UserManagement_HostAddress}}/api/user
+Accept: application/json
+Authorization: Bearer {{UserManagement_Token}}
+
+###
+GET {{UserManagement_HostAddress}}/api/user/1
+Authorization: Bearer {{UserManagement_Token}}
+
+###
+PUT {{UserManagement_HostAddress}}/api/user/1
+Content-Type: application/json
+Authorization: Bearer {{UserManagement_Token}}
+
+{
+    "id": 1,
+    "name": "John Doe",
+    "email": "asddd@mail.cc",
+    "password": "1securepassword123"
+}
+
+###
+DELETE {{UserManagement_HostAddress}}/api/user/1
+Authorization: Bearer {{UserManagement_Token}}
